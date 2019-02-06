@@ -1,0 +1,33 @@
+<div
+  cdkDropList
+  [id]="'state_' + state?.id"
+  [cdkDropListData]="state"
+  [cdkDropListConnectedTo]="connectedContainerIds"
+  [cdkDropListEnterPredicate]="predicate"
+  (cdkDropListDropped)="drop($event)"
+  class="bg-light h-100"
+>
+  <div class="bg-success text-white text-center p-1 d-block">
+    {{ state?.label }}
+  </div>
+  <div>
+    <div
+      class="card mt-1"
+      *ngFor="let ticket of state?.tickets"
+      cdkDrag
+      [cdkDragData]="ticket"
+    >
+      <div class="card-body">
+        <h4 class="card-title">{{ ticket.title }}</h4>
+        <p class="card-text">{{ ticket.details }}</p>
+        <span
+          [attr.id]="'tag_' + tag?.id"
+          [ngClass]="tag?.color?.cssClass"
+          *ngFor="let tag of ticket.tags"
+          class="badge mr-1"
+          >{{ tag.label }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

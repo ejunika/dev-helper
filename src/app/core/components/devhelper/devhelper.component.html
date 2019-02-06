@@ -1,0 +1,9 @@
+<devhelper-header (onToggleMenuClick)="sidenav.toggle()"></devhelper-header>
+<mat-sidenav-container class="devhelper-container">
+  <mat-sidenav class="devhelper-sidenav" #sidenav mode="side">
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content class="devhelper-main">
+    <section class="container-fluid"><router-outlet></router-outlet></section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

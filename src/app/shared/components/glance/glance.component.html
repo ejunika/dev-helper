@@ -1,0 +1,25 @@
+<div class="card shadow-sm mb-4 mt-4">
+  <div class="kf-card-top d-flex">
+    <i class="kf-small" [ngClass]="glance?.icon?.iClasses"></i>
+    <div class="kf-card-data ml-auto">
+      <p class="mb-0">{{ glance?.name }}</p>
+      <h4>{{ glance?.value | glanceValue }}</h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="progress mb-2">
+      <div
+        class="progress-bar"
+        [ngClass]="glance?.value?.percent > 50 ? 'bg-success' : 'bg-danger'"
+        role="progressbar"
+        [ngStyle]="{ 'width.%': glance?.value?.percent }"
+        aria-valuenow="glance?.value?.percent"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+    <p class="mb-0 text-center">
+      Better than last week by ({{ glance?.value?.percent }}%)
+    </p>
+  </div>
+</div>

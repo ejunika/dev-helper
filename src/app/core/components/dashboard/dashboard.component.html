@@ -1,0 +1,29 @@
+<div class="row">
+  <div *ngFor="let glance of glances" class="col-md-3">
+    <app-glance [glance]="glance"></app-glance>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <app-chart-card
+              [chartType]="'radar'"
+              [chartData]="chartData"
+              [chartOptions]="chartOptions"
+            ></app-chart-card>
+          </div>
+          <div class="col-md-6">
+            <app-chart-card
+              [chartType]="'line'"
+              [chartData]="chartData"
+              [chartOptions]="chartOptions"
+            ></app-chart-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
