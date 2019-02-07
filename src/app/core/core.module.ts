@@ -9,6 +9,7 @@ import { QuickViewComponent } from './components/quick-view/quick-view.component
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 import { UnauthorizeComponent } from './components/unauthorize/unauthorize.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UnauthorizeComponent } from './components/unauthorize/unauthorize.compo
     QuickViewComponent,
     NotFoundComponent,
     TicketDetailsComponent,
-    UnauthorizeComponent
+    UnauthorizeComponent,
+    TodoComponent
   ],
   exports: [],
   imports: [

@@ -22,15 +22,15 @@
         >
       </li>
       <li *ngIf="showCreateButton" class="nav-item">
-        <app-button (onClick)="openCreateModalDialog($event)">Create</app-button>
+        <app-button (onClick)="createTicketModal.open()">Create</app-button>
       </li>
     </ul>
-    <form *ngIf="searchEnabled" class="form-inline my-2 my-lg-0">
+    <!-- <form *ngIf="searchEnabled" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" />
       <button class="btn btn-primary my-2 my-sm-0" type="submit">
         Search
       </button>
-    </form>
+    </form> -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <div
@@ -60,3 +60,4 @@
     </ul>
   </div>
 </nav>
+<app-modal-dialog #createTicketModal></app-modal-dialog>

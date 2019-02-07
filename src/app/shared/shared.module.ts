@@ -15,6 +15,8 @@ import { ButtonComponent } from './components/button/button.component';
 import { GlanceValuePipe } from './pipes/glance-value.pipe';
 import { ChartCardComponent } from './components/chart-card/chart-card.component';
 import { GlanceComponent } from './components/glance/glance.component';
+import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { GlanceComponent } from './components/glance/glance.component';
     ButtonComponent,
     GlanceValuePipe,
     ChartCardComponent,
-    GlanceComponent
+    GlanceComponent,
+    ModalDialogComponent
   ],
   exports: [
     RouterModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatCheckboxModule,
     DragDropModule,
@@ -41,10 +45,12 @@ import { GlanceComponent } from './components/glance/glance.component';
     BreadcrumbComponent,
     GlanceValuePipe,
     ChartCardComponent,
-    GlanceComponent
+    GlanceComponent,
+    ModalDialogComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule,
     MatSidenavModule,
     MatCheckboxModule,

@@ -1,5 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 import { UserContextService } from 'src/app/services/user-context.service';
+
+declare var $: any;
 
 @Component({
   selector: 'devhelper-header',
@@ -11,7 +20,6 @@ export class HeaderComponent implements OnInit {
   showCreateButton: boolean;
   @Output()
   onToggleMenuClick: EventEmitter<boolean>;
-
   constructor(private userContextService: UserContextService) {
     this.onToggleMenuClick = new EventEmitter<boolean>();
     this.userContextService.getAppConfig().subscribe((appConfig: any) => {
@@ -20,7 +28,4 @@ export class HeaderComponent implements OnInit {
     });
   }
   ngOnInit() {}
-  openCreateModalDialog(): void {
-    console.log('Called');
-  }
 }

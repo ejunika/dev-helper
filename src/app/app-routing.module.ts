@@ -8,6 +8,7 @@ import { NotFoundComponent } from './core/components/not-found/not-found.compone
 import { TicketDetailsComponent } from './core/components/ticket-details/ticket-details.component';
 import { BoardComponent } from './pocker/components/board/board.component';
 import { RoomComponent } from './pocker/components/room/room.component';
+import { TodoComponent } from './core/components/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path: 'core/dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'core/todo-app',
+        component: TodoComponent
       },
       {
         path: 'pocker/board',

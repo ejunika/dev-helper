@@ -90,10 +90,16 @@ export class UserContextService {
             icon: { src: '', iClasses: 'fa fa-running', useSrc: false }
           },
           {
-            id: '12',
+            id: '13',
             displayText: 'Retrolyser',
             navigationLink: '/app/core/retrolyser',
             icon: { src: '', iClasses: 'fa fa-retweet', useSrc: false }
+          },
+          {
+            id: '14',
+            displayText: 'To Do Application',
+            navigationLink: '/app/core/todo-app',
+            icon: { src: '', iClasses: 'fa fa-clipboard-list', useSrc: false }
           }
         ]
       },
