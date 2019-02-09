@@ -1,29 +1,91 @@
 <div class="row">
   <div class="col">
-    <h1>{{ room.title }}</h1>
+    <h1>{{ room?.name }}</h1>
   </div>
 </div>
 <div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-body">
-                6
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="col-8">
+    <app-ballot-paper *ngIf="!isResultOut"></app-ballot-paper>
+    <app-vote-result *ngIf="isResultOut"></app-vote-result>
   </div>
   <div class="col-md-4">
     <div class="card">
-      <div class="card-body">
-        Info
+      <div class="card-header">
+        Click start to begin voting
       </div>
+      <div class="card-body d-flex">
+        <h4>Players:</h4>
+        <h4 class="ml-auto">12:34:55</h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fa fa-user mr-2"></i>
+          Adum Chris
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-user mr-2"></i>
+          Adum Chris
+        </li>
+      </ul>
+      <div class="p-2">
+        <button
+          *ngIf="!isVotingInAction"
+          (click)="startVoting()"
+          class="btn btn-primary btn-block"
+        >
+          Start
+        </button>
+        <button
+          *ngIf="isVotingInAction"
+          (click)="showResult()"
+          class="btn btn-primary btn-block"
+        >
+          Show Result
+        </button>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="form-group">
+            <fieldset>
+              <label class="control-label" for="roomLink"
+                >Invite a teammate</label
+              >
+              <!-- <input
+                (click)="$event.target.select()"
+                class="form-control"
+                id="roomLink"
+                type="text"
+                value="https://www.google.com"
+                placeholder="Link for this room"
+                readonly=""
+              /> -->
+              <div class="input-group">
+                <input
+                  #roomLink
+                  id="roomLink"
+                  readonly=""
+                  value="http://localhost:4200/app/poker/board/rooms/1549649669465"
+                  type="text"
+                  class="form-control"
+                  placeholder="roomLink"
+                  aria-label="roomLink"
+                  aria-describedby="copyLinkBtn"
+                />
+                <div class="input-group-append">
+                  <button
+                    (click)="copyRoomLink(roomLink)"
+                    class="btn btn-outline-primary"
+                    type="button"
+                    id="copyLinkBtn"
+                  >
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

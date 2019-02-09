@@ -1,4 +1,4 @@
-<div #modalDialog class="modal">
+<div #modalDialog class="modal fade">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,15 +14,18 @@
       </div>
       <div class="modal-body"><ng-content></ng-content></div>
       <div class="modal-footer">
-        <button
-          *ngFor="let modalControlButton of modalControlButtons"
-          (click)="modalControlButton.action(self)"
-          type="button"
-          class="btn"
-          [ngClass]="modalControlButton?.classes"
-        >
-          {{ modalControlButton?.text }}
-        </button>
+        <ng-container *ngFor="let modalControlButton of modalControlButtons">
+          <button
+            *ngIf="modalControlButton?.isVisible"
+            (click)="modalControlButton.action(self)"
+            type="button"
+            class="btn"
+            [disabled]="!modalControlButton?.isEnabled"
+            [ngClass]="modalControlButton?.classes"
+          >
+            {{ modalControlButton?.text }}
+          </button>
+        </ng-container>
       </div>
     </div>
   </div>

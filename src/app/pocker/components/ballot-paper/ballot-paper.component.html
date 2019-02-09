@@ -1,0 +1,7 @@
+<div class="text-center">
+  <ul>
+    <li *ngFor="let vote of availableVotes">
+      <app-vote (onVoted)="onVoted($event)" [vote]="vote"></app-vote>
+    </li>
+  </ul>
+</div>

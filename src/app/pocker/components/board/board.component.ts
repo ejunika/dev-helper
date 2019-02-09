@@ -23,7 +23,10 @@ export class BoardComponent implements OnInit {
       id: 'cancel',
       text: 'Cancel',
       classes: 'btn-secondary',
+      isEnabled: true,
+      isVisible: true,
       action: modalDialog => {
+        this.roomFormGroup.reset();
         modalDialog.close();
       }
     },
@@ -31,6 +34,8 @@ export class BoardComponent implements OnInit {
       id: 'save',
       text: 'Save',
       classes: 'btn-primary',
+      isEnabled: false,
+      isVisible: true,
       action: modalDialog => {
         this.createRoom();
         modalDialog.close();
@@ -44,8 +49,12 @@ export class BoardComponent implements OnInit {
     this.rooms = [];
     this.roomFormGroup = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required]),
       details: new FormControl('')
+    });
+    this.roomFormGroup.valueChanges.subscribe(() => {
+      this.createRoomModalControlButtons[1].isEnabled =
+        this.roomFormGroup.status === 'VALID';
     });
   }
 
@@ -57,7 +66,7 @@ export class BoardComponent implements OnInit {
   }
 
   open(room: PokerRoom): void {
-    this.router.navigate(['/pocker/board/rooms', room.id]);
+    this.router.navigate(['app/poker/board/rooms', room.id]);
   }
 
   openToEdit(room: PokerRoom): void {

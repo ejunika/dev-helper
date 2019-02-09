@@ -11,6 +11,13 @@ export class UserContextService {
     menu: { isOpened: true },
     header: { searchEnabled: false, showCreateButton: true }
   };
+
+  loggedInUser: any = {
+    username: 'samakt',
+    firstName: 'Sam',
+    lastName: 'Akhtar'
+  };
+
   constructor() {}
 
   getGlances(): Observable<Array<Glance>> {
@@ -46,8 +53,8 @@ export class UserContextService {
         name: 'Traffic',
         value: {
           pre: false,
-          fix: 'K',
-          count: 2200000,
+          fix: 'M',
+          count: 220,
           percent: 80
         },
         icon: {
@@ -59,8 +66,8 @@ export class UserContextService {
         name: 'Organic Traffic',
         value: {
           pre: false,
-          fix: 'K',
-          count: 500000,
+          fix: 'M',
+          count: 50,
           percent: 30
         },
         icon: {
@@ -74,7 +81,7 @@ export class UserContextService {
     return of([
       {
         id: '01',
-        displayText: 'Dev Helper',
+        displayText: 'Core Application',
         icon: { src: '', iClasses: 'fa fa-hands-helping', useSrc: false },
         children: [
           {
@@ -105,13 +112,13 @@ export class UserContextService {
       },
       {
         id: '02',
-        displayText: 'Pocker',
+        displayText: 'Poker',
         icon: { src: '', iClasses: 'fa fa-flag', useSrc: false },
         children: [
           {
             id: '22',
             displayText: 'Board',
-            navigationLink: '/app/pocker/board',
+            navigationLink: '/app/poker/board',
             icon: { src: '', iClasses: 'fa fa-hat-wizard', useSrc: false }
           }
         ]

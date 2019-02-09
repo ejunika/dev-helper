@@ -26,11 +26,13 @@ export class MenuComponent implements OnInit {
     let hourOfDay = currentDate.getHours();
     if (hourOfDay < 12) {
       this.welcomeText += 'Good morning, ';
-    } else if (hourOfDay > 12) {
-      this.welcomeText += 'Good afternoon, ';
     } else if (hourOfDay === 12) {
       this.welcomeText += 'Good noon, ';
+    } else if (hourOfDay > 12 && hourOfDay < 17) {
+      this.welcomeText += 'Good afternoon, ';
+    } else if (hourOfDay > 17) {
+      this.welcomeText += 'Good evening, ';
     }
-    this.welcomeText += 'Ansu';
+    this.welcomeText += this.userContext.loggedInUser.firstName;
   }
 }

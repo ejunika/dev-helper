@@ -1,0 +1,21 @@
+<button
+  [ngClass]="{
+    'btn-success': vote.isVoted === true,
+    'btn-default': vote.isVoted === false
+  }"
+  (click)="doVote()"
+  class="btn vote shadow"
+>
+  <div class="left-icon">
+    <span *ngIf="!vote?.icon?.useClasses">{{ vote?.icon?.value }}</span>
+    <i *ngIf="vote?.icon?.useClasses" [ngClass]="vote?.icon?.classes"></i>
+  </div>
+  <div class="center-icon">
+    <span *ngIf="!vote?.icon?.useClasses">{{ vote?.icon?.value }}</span>
+    <i *ngIf="vote?.icon?.useClasses" [ngClass]="vote?.icon?.classes"></i>
+  </div>
+  <div class="right-icon">
+    <span *ngIf="!vote?.icon?.useClasses">{{ vote?.icon?.value }}</span>
+    <i *ngIf="vote?.icon?.useClasses" [ngClass]="vote?.icon?.classes"></i>
+  </div>
+</button>

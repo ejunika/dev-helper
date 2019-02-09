@@ -46,11 +46,11 @@ const routes: Routes = [
         component: TodoComponent
       },
       {
-        path: 'pocker/board',
+        path: 'poker/board',
         component: BoardComponent
       },
       {
-        path: 'pocker/board/rooms/:roomId',
+        path: 'poker/board/rooms/:roomId',
         component: RoomComponent
       },
       {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Ticket } from '../shared/modals/ticket';
 import { HttpClient } from '@angular/common/http';
+import { PokerRoom } from '../shared/modals/poker';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,11 @@ export class DataService {
     ]);
   }
 
-  getRoom(): Observable<any> {
-    return this.httpClient.get('');
+  getRoom(roomId: string): Observable<PokerRoom> {
+    return of({
+      id: roomId,
+      name: 'The New Room',
+      details: 'Details of the new room'
+    });
   }
-
 }
