@@ -18,13 +18,9 @@
         <h4 class="ml-auto">12:34:55</h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+        <li *ngFor="let participant of participants" class="list-group-item">
           <i class="fa fa-user mr-2"></i>
-          Adum Chris
-        </li>
-        <li class="list-group-item">
-          <i class="fa fa-user mr-2"></i>
-          Adum Chris
+          {{ participant?.username }}
         </li>
       </ul>
       <div class="p-2">
@@ -50,15 +46,6 @@
               <label class="control-label" for="roomLink"
                 >Invite a teammate</label
               >
-              <!-- <input
-                (click)="$event.target.select()"
-                class="form-control"
-                id="roomLink"
-                type="text"
-                value="https://www.google.com"
-                placeholder="Link for this room"
-                readonly=""
-              /> -->
               <div class="input-group">
                 <input
                   #roomLink

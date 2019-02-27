@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-todo',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  mylists = ['Sunday', 'January', '2019'];
-  constructor() { }
+  mylists = [];
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
+    this.dataService.getUsers().subscribe((userResponse: any) => {
+      this.mylists = userResponse.data;
+    });
   }
-
 }

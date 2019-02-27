@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./root.component.scss']
 })
 export class RootComponent {
-  title = 'Root';
+  loadingMessage = 'One moment please..';
 }

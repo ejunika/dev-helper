@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item" *ngFor="let reportTab of reportTabs">
+    <a
+      [ngClass]="{ active: reportTab?.isActive }"
+      class="nav-link"
+      data-toggle="tab"
+      [href]="'#' + reportTab?.id"
+    >
+      {{ reportTab?.displayName }}
+    </a>
+  </li>
+</ul>
+<div id="reportTabContent" class="tab-content h-100">
+  <div
+    *ngFor="let reportTab of reportTabs"
+    class="tab-pane fade h-100"
+    [ngClass]="{ show: reportTab?.isActive, active: reportTab?.isActive }"
+    [id]="reportTab?.id"
+  >
+    <app-pbi-report
+      [reportName]="reportTab?.name"
+    ></app-pbi-report>
+  </div>
+</div>

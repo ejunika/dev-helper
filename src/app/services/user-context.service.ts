@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscriber } from 'rxjs';
 import { AppMenuItem } from 'src/app/shared/modals/app-menu-item';
 import { Glance } from '../shared/modals/ticket';
+import { DataService } from './data.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +14,21 @@ export class UserContextService {
     header: { searchEnabled: false, showCreateButton: true }
   };
 
-  loggedInUser: any = {
-    username: 'samakt',
-    firstName: 'Sam',
-    lastName: 'Akhtar'
-  };
+  loggedInUser: Observable<any>;
 
-  constructor() {}
+  constructor(private dataService: DataService) {
+    this.initLoggedInUser();
+  }
+
+  initLoggedInUser(): void {
+    this.loggedInUser = new Observable((subscriber: Subscriber<any>) => {
+      this.dataService.getAuthInfo().subscribe((authResponse: any) => {
+        subscriber.next(authResponse.data[0]);
+      }, (error: Error)=>{
+
+      });
+    });
+  }
 
   getGlances(): Observable<Array<Glance>> {
     return of([
@@ -78,6 +88,11 @@ export class UserContextService {
   }
 
   getUserMenus(): Observable<Array<AppMenuItem>> {
+    return this.dataService.getUserMenus().pipe(
+      map((navigationResponse: any) => {
+        return navigationResponse.data;
+      })
+    );
     return of([
       {
         id: '01',
@@ -120,6 +135,32 @@ export class UserContextService {
             displayText: 'Board',
             navigationLink: '/app/poker/board',
             icon: { src: '', iClasses: 'fa fa-hat-wizard', useSrc: false }
+          }
+        ]
+      },
+      {
+        id: '03',
+        displayText: 'Virtual Duniya',
+        icon: { src: '', iClasses: 'fa fa-users', useSrc: false },
+        children: [
+          {
+            id: '22',
+            displayText: 'Feeds',
+            navigationLink: '/app/virtual-duniya/feeds',
+            icon: { src: '', iClasses: 'fa fa-comments', useSrc: false }
+          }
+        ]
+      },
+      {
+        id: '04',
+        displayText: 'Games',
+        icon: { src: '', iClasses: 'fa fa-gamepad', useSrc: false },
+        children: [
+          {
+            id: '22',
+            displayText: 'Snake Ball',
+            navigationLink: '/app/games/snake-ball',
+            icon: { src: '', iClasses: 'fa fa-futbol', useSrc: false }
           }
         ]
       }

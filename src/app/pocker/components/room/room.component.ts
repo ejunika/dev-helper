@@ -11,7 +11,7 @@ import { PokerRoom } from 'src/app/shared/modals/poker';
 })
 export class RoomComponent implements OnInit {
   room: PokerRoom;
-
+  participants: Array<any>;
   isVotingInAction: boolean;
   isResultOut: boolean;
 
@@ -21,6 +21,7 @@ export class RoomComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.participants = [];
     this.isVotingInAction = false;
     this.activatedRoute.params
       .pipe(
@@ -31,6 +32,13 @@ export class RoomComponent implements OnInit {
       .subscribe((room: PokerRoom) => {
         this.room = room;
       });
+    this.getParticipants();
+  }
+
+  getParticipants(): void {
+    this.dataService.getUsers().subscribe((userResponse: any) => {
+      this.participants = userResponse.data;
+    });
   }
 
   startVoting(): void {

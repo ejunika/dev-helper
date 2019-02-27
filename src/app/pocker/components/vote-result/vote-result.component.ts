@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartOptions, ChartData } from 'chart.js';
 
 @Component({
   selector: 'app-vote-result',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vote-result.component.scss']
 })
 export class VoteResultComponent implements OnInit {
-  chartData = {
+  chartData: ChartData = {
     labels: ['1', '2', '3', '5', '8', '13'],
     datasets: [
       {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'No of Votes',
+        data: [0, 0, 5, 1, 0, 0],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -33,7 +34,7 @@ export class VoteResultComponent implements OnInit {
     ]
   };
 
-  chartOptions = {
+  chartOptions: ChartOptions = {
     scales: {
       yAxes: [
         {
@@ -42,12 +43,13 @@ export class VoteResultComponent implements OnInit {
           }
         }
       ]
+    },
+    legend: {
+      display: false
     }
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

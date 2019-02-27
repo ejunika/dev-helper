@@ -3,11 +3,11 @@
     <img
       class="rounded-circle img-thumbnail mx-auto d-block mt-2"
       style="width: 100%;"
-      src="assets/images/pp.jpg"
+      src="assets/images/user_male.png"
       alt="Card image"
     />
     <h5 class="card-title text-center mt-3 text-light">
-      {{welcomeText}}
+      {{ welcomeText }}
     </h5>
   </div>
   <div class="card-body d-flex">
@@ -15,7 +15,11 @@
       <i class="fa fa-user-circle mr-2"></i>
       Profile
     </a>
-    <a href="#" class="card-link ml-auto text-dark">
+    <a
+      href="javascript: void(0)"
+      (click)="logout()"
+      class="card-link ml-auto text-dark"
+    >
       Logout
       <i class="fa fa-sign-out-alt ml-2"></i>
     </a>
@@ -34,7 +38,7 @@
           [attr.aria-controls]="'collapse_' + menuItem?.id"
         >
           <span>
-            <i class="mr-2" [ngClass]="menuItem?.icon?.iClasses"></i>
+            <i class="mr-2" [ngClass]="menuItem?.iconValue"></i>
             {{ menuItem?.displayText }}
           </span>
           <span class="ml-auto">
@@ -58,7 +62,7 @@
             class="list-group-item list-group-item-action bg-light"
           >
             <span class="mr-2 ml-4">
-              <i [ngClass]="subMenu?.icon?.iClasses"></i>
+              <i [ngClass]="subMenu?.iconValue"></i>
             </span>
             <span>
               {{ subMenu?.displayText }}

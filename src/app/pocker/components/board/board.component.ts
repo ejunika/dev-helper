@@ -15,6 +15,8 @@ export class BoardComponent implements OnInit {
 
   roomFormGroup: FormGroup;
 
+  currentRoom: any;
+
   @ViewChild('createRoomModalDialog')
   createRoomModalDialog: ModalDialogComponent;
 
@@ -37,7 +39,7 @@ export class BoardComponent implements OnInit {
       isEnabled: false,
       isVisible: true,
       action: modalDialog => {
-        this.createRoom();
+        this.performAction();
         modalDialog.close();
       }
     }
@@ -65,12 +67,28 @@ export class BoardComponent implements OnInit {
     this.roomFormGroup.reset();
   }
 
+  updateRoom(room: PokerRoom): void {
+    Object.assign(
+      this.rooms[this.rooms.indexOf(this.currentRoom)],
+      this.roomFormGroup.value
+    );
+  }
+
+  performAction(): void {
+    if (!this.currentRoom) {
+      this.createRoom();
+    } else {
+      this.updateRoom(this.currentRoom);
+    }
+  }
+
   open(room: PokerRoom): void {
     this.router.navigate(['app/poker/board/rooms', room.id]);
   }
 
   openToEdit(room: PokerRoom): void {
     this.roomFormGroup.setValue(room);
+    this.currentRoom = room;
     this.createRoomModalDialog.open();
   }
 

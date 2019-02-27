@@ -31,7 +31,9 @@ export class ModalDialogComponent implements OnInit {
         id: 'cancel',
         text: 'Cancel',
         classes: 'btn-secondary',
-        action: () => {
+        isEnabled: true,
+        isVisible: true,
+        action: (modalDialog: any) => {
           this.close();
         }
       },
@@ -39,7 +41,9 @@ export class ModalDialogComponent implements OnInit {
         id: 'create',
         text: 'Create',
         classes: 'btn-primary',
-        action: () => {}
+        isEnabled: true,
+        isVisible: true,
+        action: (modalDialog: any) => {}
       }
     ];
   }

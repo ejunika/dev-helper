@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="card bg-light mb-3">
+      <div class="card-body"></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card bg-light mb-3">
+      <div class="card-header">Create Post</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <textarea
+              data-gramm_editor="false"
+              placeholder="Write something here..."
+              class="form-control"
+              id="createPost"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer d-flex p-1">
+        <button class="btn btn-success">
+          <i class="fa fa-cloud-upload-alt mr-2"></i>
+          Photo/Video
+        </button>
+        <button class="btn btn-primary ml-auto">
+          Send
+          <i class="fa fa-share-square ml-2"></i>
+        </button>
+      </div>
+    </div>
+    <app-feed></app-feed>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-light mb-3">
+      <div class="card-body"></div>
+    </div>
+  </div>
+</div>
